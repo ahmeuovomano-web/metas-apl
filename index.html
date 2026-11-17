@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111315">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="META">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>META — suas metas</title>
+<style>
+:root{color-scheme:dark;--bg:#101214;--panel:#191d20;--panel2:#22272b;--line:#30373b;--text:#f2f4f1;--muted:#9aa39d;--green:#c9f27a;--green2:#a8d95c;--danger:#ff8b8b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+button,input,textarea{font:inherit}button{cursor:pointer}.app{max-width:760px;margin:auto;padding:22px 18px 100px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:2px}.mark{width:34px;height:34px;border-radius:11px;background:var(--green);color:#172016;display:grid;place-items:center;font-size:20px}.subtle{color:var(--muted);font-size:13px}.iconbtn{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:12px;width:42px;height:42px}
+h1{font-size:30px;line-height:1.12;margin:0 0 8px;letter-spacing:-.8px}h2{font-size:20px;margin:0 0 14px}h3{font-size:16px;margin:0 0 6px}.intro{margin-bottom:26px}.intro p{color:var(--muted);margin:0}
+.sectionhead{display:flex;align-items:center;justify-content:space-between;margin:24px 0 12px}.primary{border:0;border-radius:14px;padding:13px 16px;background:var(--green);color:#182016;font-weight:750}.secondary{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:12px;padding:11px 13px;font-weight:650}.ghost{border:0;background:transparent;color:var(--muted);padding:8px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:17px;margin-bottom:12px}.empty{padding:30px 18px;text-align:center;border:1px dashed #424a4e;border-radius:18px;color:var(--muted)}.empty strong{display:block;color:var(--text);margin-bottom:6px}
+.goal-title{font-size:18px;font-weight:750;margin-bottom:7px;overflow-wrap:anywhere}.meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin:8px 0 13px}.progressrow{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:7px}.track{height:8px;background:#343b3f;border-radius:20px;overflow:hidden}.fill{height:100%;background:var(--green);border-radius:20px;transition:width .2s}.goalactions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}.goalactions button{font-size:13px}
+.field{display:grid;gap:7px;margin:14px 0}.field label{font-size:13px;color:#c5ccc6;font-weight:650}.field input,.field textarea{width:100%;border:1px solid var(--line);background:#111517;color:var(--text);border-radius:12px;padding:13px;outline:none}.field textarea{min-height:78px;resize:vertical}.field input:focus,.field textarea:focus{border-color:var(--green)}
+.modal{position:fixed;inset:0;background:#000a;display:none;align-items:flex-end;justify-content:center;padding:12px;z-index:5}.modal.show{display:flex}.sheet{width:min(100%,600px);max-height:90vh;overflow:auto;background:#191d20;border:1px solid var(--line);border-radius:22px;padding:20px}.sheethead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.sheethead h2{margin:0}.formactions{display:flex;gap:9px;margin-top:18px}.formactions>*{flex:1}
+.task{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.task:last-child{border-bottom:0}.check{appearance:none;width:22px;height:22px;flex:0 0 22px;border:1.5px solid #66716a;border-radius:7px;margin:0;display:grid;place-items:center}.check:checked{background:var(--green);border-color:var(--green)}.check:checked:after{content:"✓";color:#182016;font-weight:900}.taskname{flex:1;overflow-wrap:anywhere}.done{text-decoration:line-through;color:var(--muted)}.smallbtn{border:0;background:transparent;color:var(--muted);padding:3px 6px}.tabs{position:fixed;bottom:0;left:0;right:0;background:#141719ee;backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:10px;z-index:3}.tab{border:0;background:transparent;color:var(--muted);padding:9px 15px;border-radius:12px;font-size:13px}.tab.active{background:#293126;color:var(--green);font-weight:750}.view{display:none}.view.active{display:block}.statgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:15px}.stat strong{font-size:25px;display:block;color:var(--green)}.stat span{font-size:12px;color:var(--muted)}.notice{border:1px solid #48513a;background:#20271b;color:#d9edbd;padding:12px;border-radius:13px;font-size:13px;line-height:1.45}.danger{color:var(--danger)}.hidden{display:none!important}
+@media(min-width:600px){.app{padding-top:36px}.modal{align-items:center}.sheet{border-radius:22px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="brand"><div class="mark">◎</div><span>META</span></div><button class="iconbtn" id="settingsBtn" aria-label="Configurações">⚙</button></header>
+<main>
+<section class="view active" id="homeView">
+<div class="intro"><h1>O que você quer<br>conquistar?</h1><p>Clareza no objetivo. Um passo de cada vez.</p></div>
+<div class="statgrid" id="stats"></div>
+<div class="sectionhead"><h2>Minhas metas</h2><button class="primary" id="newGoalBtn">＋ Nova meta</button></div>
+<div id="goalList"></div>
+</section>
+<section class="view" id="detailView">
+<button class="ghost" id="backBtn">← Todas as metas</button>
+<div id="detailContent"></div>
+</section>
+<section class="view" id="settingsView">
+<div class="intro"><h1>Configurações</h1><p>Seus dados e preferências.</p></div>
+<div class="card">
+<h3>Armazenamento e sincronização</h3>
+<p class="subtle">Esta versão salva os dados neste navegador e funciona offline após a primeira abertura. A sincronização entre dispositivos precisa de uma conta e de um serviço de nuvem, que ainda não foi conectado.</p>
+<div class="notice">Você pode exportar um backup e importá-lo em outro aparelho. Isso mantém seus dados sob seu controle.</div>
+<div class="goalactions"><button class="secondary" id="exportBtn">Exportar backup</button><button class="secondary" id="importBtn">Importar backup</button><input class="hidden" type="file" id="importFile" accept="application/json"></div>
+</div>
+<div class="card">
+<h3>Instalar no iPhone</h3><p class="subtle">Abra este aplicativo no Safari, toque em Compartilhar e escolha “Adicionar à Tela de Início”.</p>
+</div>
+<div class="card">
+<h3>Dados</h3><p class="subtle">Apagar os dados remove todas as metas salvas neste navegador.</p><button class="secondary danger" id="clearBtn">Apagar todos os dados</button>
+</div>
+</section>
+</main>
+</div>
+<nav class="tabs"><button class="tab active" data-view="homeView">⌂ Início</button><button class="tab" data-view="settingsView">⚙ Ajustes</button></nav>
+<div class="modal" id="goalModal"><div class="sheet"><div class="sheethead"><h2 id="modalTitle">Nova meta</h2><button class="iconbtn" id="closeModal">✕</button></div>
+<form id="goalForm"><input type="hidden" id="goalId"><div class="field"><label for="goalName">Qual é a sua meta?</label><input id="goalName" maxlength="90" placeholder="Ex.: Ler 12 livros este ano" required></div>
+<div class="field"><label for="goalWhy">Por que isso é importante? (opcional)</label><textarea id="goalWhy" maxlength="300" placeholder="O que vai mudar quando você conseguir?"></textarea></div>
+<div class="field"><label for="goalDate">Prazo (opcional)</label><input type="date" id="goalDate"></div>
+<div class="field"><label for="firstTask">Qual é o primeiro passo?</label><input id="firstTask" maxlength="120" placeholder="Ex.: Escolher o primeiro livro"></div>
+<div class="formactions"><button type="button" class="secondary" id="cancelModal">Cancelar</button><button class="primary" type="submit">Salvar meta</button></div></form></div></div>
+<script>
+const KEY='meta-goals-v1';
+let goals=load(), currentId=null;
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
+function save(){localStorage.setItem(KEY,JSON.stringify(goals));render()}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function progress(g){return g.tasks.length?Math.round(g.tasks.filter(t=>t.done).length/g.tasks.length*100):0}
+function render(){
+ const done=goals.reduce((n,g)=>n+g.tasks.filter(t=>t.done).length,0), total=goals.reduce((n,g)=>n+g.tasks.length,0);
+ document.getElementById('stats').innerHTML=`<div class="stat"><strong>${goals.length}</strong><span>Metas ativas</span></div><div class="stat"><strong>${done}/${total}</strong><span>Etapas concluídas</span></div>`;
+ const list=document.getElementById('goalList');
+ if(!goals.length){list.innerHTML='<div class="empty"><strong>Sua próxima conquista começa aqui.</strong>Crie uma meta e defina o primeiro passo.<br><br><button class="primary" onclick="openGoal()">Criar minha primeira meta</button></div>';return}
+ list.innerHTML=goals.map(g=>`<article class="card"><div class="goal-title">${esc(g.name)}</div><div class="meta">${g.date?`<span>◷ Até ${new Date(g.date+'T12:00:00').toLocaleDateString('pt-BR')}</span>`:''}<span>${g.tasks.length} ${g.tasks.length===1?'etapa':'etapas'}</span></div><div class="progressrow"><span>Progresso</span><strong>${progress(g)}%</strong></div><div class="track"><div class="fill" style="width:${progress(g)}%"></div></div><div class="goalactions"><button class="secondary" onclick="openDetail('${g.id}')">Ver etapas</button><button class="ghost" onclick="editGoal('${g.id}')">Editar</button></div></article>`).join('');
+}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===id));}
+function openGoal(g=null){document.getElementById('goalForm').reset();document.getElementById('goalId').value=g?.id||'';document.getElementById('modalTitle').textContent=g?'Editar meta':'Nova meta';document.getElementById('goalName').value=g?.name||'';document.getElementById('goalWhy').value=g?.why||'';document.getElementById('goalDate').value=g?.date||'';document.getElementById('firstTask').value='';document.getElementById('goalModal').classList.add('show')}
+function editGoal(id){const g=goals.find(x=>x.id===id);if(g)openGoal(g)}
+function closeGoal(){document.getElementById('goalModal').classList.remove('show')}
+document.getElementById('newGoalBtn').onclick=()=>openGoal();document.getElementById('closeModal').onclick=closeGoal;document.getElementById('cancelModal').onclick=closeGoal;
+document.getElementById('goalForm').onsubmit=e=>{e.preventDefault();const id=document.getElementById('goalId').value;let g=goals.find(x=>x.id===id);const name=document.getElementById('goalName').value.trim();if(!name)return;if(g){g.name=name;g.why=document.getElementById('goalWhy').value.trim();g.date=document.getElementById('goalDate').value}else{g={id:uid(),name,why:document.getElementById('goalWhy').value.trim(),date:document.getElementById('goalDate').value,tasks:[],created:Date.now()};goals.unshift(g)}const first=document.getElementById('firstTask').value.trim();if(first)g.tasks.push({id:uid(),name:first,done:false});save();closeGoal()};
+function openDetail(id){currentId=id;renderDetail();showView('detailView')}
+function renderDetail(){const g=goals.find(x=>x.id===currentId);if(!g)return;document.getElementById('detailContent').innerHTML=`<div class="intro"><h1>${esc(g.name)}</h1>${g.why?`<p>${esc(g.why)}</p>`:''}</div><div class="card"><div class="progressrow"><span>Seu progresso</span><strong>${progress(g)}%</strong></div><div class="track"><div class="fill" style="width:${progress(g)}%"></div></div><div class="meta">${g.tasks.filter(t=>t.done).length} de ${g.tasks.length} etapas concluídas</div></div><div class="sectionhead"><h2>Próximos passos</h2><button class="secondary" onclick="addTask()">＋ Etapa</button></div><div class="card" id="taskList">${g.tasks.length?g.tasks.map(t=>`<div class="task"><input class="check" type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id}',this.checked)"><div class="taskname ${t.done?'done':''}">${esc(t.name)}</div><button class="smallbtn" aria-label="Excluir etapa" onclick="deleteTask('${t.id}')">✕</button></div>`).join(''):'<div class="empty">Nenhuma etapa ainda. Comece com uma ação pequena e concreta.</div>'}</div><div class="card"><h3>Uma dica para avançar</h3><p class="subtle">Se estiver difícil começar, reduza a próxima etapa até ela parecer simples o bastante para fazer hoje. Consistência vale mais do que intensidade ocasional.</p></div><button class="secondary danger" onclick="deleteGoal('${g.id}')">Excluir esta meta</button>`}
+function toggleTask(id,done){const g=goals.find(x=>x.id===currentId),t=g?.tasks.find(x=>x.id===id);if(t){t.done=done;save();renderDetail()}}
+function addTask(){const name=prompt('Qual é o próximo passo?');if(!name?.trim())return;const g=goals.find(x=>x.id===currentId);g.tasks.push({id:uid(),name:name.trim(),done:false});save();renderDetail()}
+function deleteTask(id){const g=goals.find(x=>x.id===currentId);g.tasks=g.tasks.filter(t=>t.id!==id);save();renderDetail()}
+function deleteGoal(id){if(!confirm('Excluir esta meta e todas as suas etapas?'))return;goals=goals.filter(g=>g.id!==id);save();showView('homeView')}
+document.getElementById('backBtn').onclick=()=>showView('homeView');
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>showView(t.dataset.view));
+document.getElementById('settingsBtn').onclick=()=>showView('settingsView');
+document.getElementById('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({app:'META',version:1,goals},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='meta-backup.json';a.click();URL.revokeObjectURL(a.href)};
+document.getElementById('importBtn').onclick=()=>document.getElementById('importFile').click();
+document.getElementById('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!Array.isArray(data.goals))throw Error();if(confirm('Importar este backup? As metas atuais serão substituídas.')){goals=data.goals;save();alert('Backup importado.')}}catch(err){alert('Não foi possível ler esse arquivo de backup.')}e.target.value=''};
+document.getElementById('clearBtn').onclick=()=>{if(confirm('Tem certeza? Todas as metas serão apagadas deste navegador.')){goals=[];save();showView('homeView')}};
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+render();
+</script>
+</body></html>
